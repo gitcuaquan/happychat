@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { vi } from '@nuxt/ui/locale'
+
+const colorMode = useColorMode()
+colorMode.preference = 'light'
+</script>
+
+<template>
+  <UApp :locale="vi">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
+</template>
