@@ -42,7 +42,7 @@
               class="rounded-full text-gray-500 hover:text-gray-900 dark:hover:text-white hidden sm:inline-flex" />
           </div>
 
-          <UTextarea :maxrows="5" rows="1" autoresize size="md" variant="none" placeholder="Nhập tin nhắn của bạn..."
+          <UTextarea :maxrows="5" :rows="1" autoresize size="md" variant="none" placeholder="Nhập tin nhắn của bạn..."
             class="flex-1 focus:ring-0 bg-transparent placeholder:text-gray-400" />
 
           <div class="shrink-0 ">
