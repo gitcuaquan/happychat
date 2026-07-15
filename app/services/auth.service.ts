@@ -1,29 +1,48 @@
 export class AuthService {
-  constructor(private fetcher: any) {}
+  constructor(private fetcher: typeof $fetch) {}
 
-  async login(credentials: any) {
-    // Giả lập độ trễ mạng ngắn
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    
-    return {
-      token: "mock-happy-chat-token-xyz",
-      user: {
-        id: 1,
-        username: credentials.username,
-        name: "Admin User",
-        avatar: "https://api.dicebear.com/7.x/initials/svg?seed=" + credentials.username
-      }
-    };
+  login(credentials: Record<string, unknown>) {
+    return this.fetcher('/auth/login', { method: 'POST', body: credentials })
   }
 
-  async register(data: any) {
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    return { success: true };
+  register(data: Record<string, unknown>) {
+    return this.fetcher('/auth/register', { method: 'POST', body: data })
   }
 
-  async logout() {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    return { success: true };
+  logout() {
+    return this.fetcher('/auth/logout', { method: 'POST' })
+  }
+
+  connectFacebook(code: string, redirectUri?: string) {
+    return this.fetcher('/auth/facebook', {
+      method: 'POST',
+      body: { code, redirectUri }
+    })
+  }
+
+  getFacebookPages() {
+    return this.fetcher('/auth/facebook/pages', { method: 'GET' })
+  }
+
+  subscribeFacebookPages(pageIds: string[]) {
+    return this.fetcher('/auth/facebook/pages', {
+      method: 'POST',
+      body: { pageIds }
+    })
+  }
+
+  getConnectedFacebookPages() {
+    return this.fetcher('/auth/facebook/connected-pages', { method: 'GET' })
+  }
+
+  disconnectFacebookPage(pageId: string) {
+    return this.fetcher(`/auth/facebook/pages/${pageId}`, { method: 'DELETE' })
+  }
+
+  updateFacebookPageSettings(pageId: string, settings: { syncMessenger?: boolean; syncComments?: boolean }) {
+    return this.fetcher(`/auth/facebook/pages/${pageId}`, {
+      method: 'PUT',
+      body: settings
+    })
   }
 }
-
