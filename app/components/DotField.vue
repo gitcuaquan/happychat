@@ -218,6 +218,7 @@ function setupCanvas() {
 
     for (let i = 0; i < dots.length; i++) {
       const d = dots[i];
+      if (!d) continue;
 
       const dx = mouse.x - d.ax;
       const dy = mouse.y - d.ay;

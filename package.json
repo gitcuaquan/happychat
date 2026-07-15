@@ -14,6 +14,9 @@
     "@iconify-json/lucide": "^1.2.114",
     "@iconify-json/simple-icons": "^1.2.87",
     "@nuxt/ui": "^4.9.0",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.4",
     "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.1",
     "zod": "^4.4.3"
@@ -21,6 +24,8 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
     "@nuxtjs/ngrok": "^4.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "eslint": "^10.6.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.5"

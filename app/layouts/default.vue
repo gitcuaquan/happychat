@@ -25,8 +25,8 @@
             :icon="link.icon"
             color="neutral"
             variant="ghost"
-            class="w-11 h-11 flex items-center justify-center rounded-xl transition-all text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-800"
-            active-class="bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-white"
+            class="w-11 h-11 flex items-center justify-center rounded-xl transition-all text-primary-400 hover:text-primary-900 hover:bg-primary-100 dark:text-primary-500 dark:hover:text-white dark:hover:bg-primary-800"
+            active-class="bg-primary-200 text-primary-900 dark:bg-primary-800 dark:text-white"
             :ui="{ icon: { size: 'size-6' } }"
           />
         </UTooltip>
@@ -203,6 +203,6 @@ const topLinks = [
   { label: 'Bình Luận', to: '/admin/comments', icon: 'i-lucide-messages-square' },
   { label: 'Khách Hàng', to: '/admin/customers', icon: 'i-lucide-users' },
   { label: 'Đơn Hàng', to: '/admin/orders', icon: 'i-lucide-shopping-bag' },
-  { label: 'Cài Đặt', to: '/admin/app-settings', icon: 'i-lucide-settings' }
+  { label: 'Cài Đặt', to: '/admin/settings/facebook', icon: 'i-lucide-settings' }
 ]
 </script>

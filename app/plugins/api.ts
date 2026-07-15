@@ -3,7 +3,7 @@ import { AuthService } from '~/services/auth.service'
 export default defineNuxtPlugin((nuxtApp) => {
   // Tạo custom fetcher với cấu hình mặc định
   const apiFetcher = $fetch.create({
-    baseURL: 'http://localhost:5000/api/v1/', // Thay đổi URL này thành API thật
+    baseURL: '/api/', // Sử dụng Nitro server API của Nuxt
     onRequest({ options }) {
       // Xử lý đính kèm Token
       const token = useCookie('happy_chat_token')
