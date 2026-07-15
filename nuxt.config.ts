@@ -13,6 +13,11 @@ export default defineNuxtConfig({
     port: 4000
   },
 
+  ngrok: {
+    // Tự động lấy NGROK_AUTHTOKEN từ biến môi trường hệ thống (không cần lưu trong .env)
+    authtoken_from_env: true
+  },
+
   devtools: {
     enabled: true
   },
