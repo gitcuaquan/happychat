@@ -36,6 +36,10 @@ async function onSubmit(event: FormSubmitEvent<any>) {
   try {
     const result = await $api.auth.login(event.data)
 
+    // Lưu token vào cookie để giữ trạng thái đăng nhập
+    const token = useCookie("happy_chat_token")
+    token.value = result.token
+
     toast.add({
       title: 'Đăng nhập thành công!',
       description: 'Đang chuyển hướng vào hệ thống...',
@@ -44,6 +48,10 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     })
 
     console.log('Đăng nhập thành công:', result)
+
+    setTimeout(() => {
+      navigateTo('/admin/chat')
+    }, 1000)
   } catch (error) {
     toast.add({
       title: 'Đăng nhập thất bại',

@@ -68,6 +68,7 @@
           <!-- List Items -->
           <div class="flex flex-col py-2 px-2 mt-auto">
             <div v-for="item in profileItems" :key="item.title"
+              @click="handleProfileItemClick(item)"
               class="flex items-start gap-4 px-4 py-3.5 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors cursor-pointer select-none rounded-2xl">
               <UIcon :name="item.icon" class="w-[22px] h-[22px] shrink-0 mt-0.5"
                 :class="item.danger ? 'text-red-600' : 'text-gray-600 dark:text-gray-400'" />
@@ -91,7 +92,33 @@
 <script setup>
 import { ref } from 'vue'
 
+const { $api } = useNuxtApp()
+const toast = useToast()
+
 const isProfileOpen = ref(false)
+
+const handleProfileItemClick = async (item) => {
+  if (item.title === 'Đăng xuất') {
+    isProfileOpen.value = false
+    try {
+      await $api.auth.logout()
+      
+      const token = useCookie("happy_chat_token")
+      token.value = null
+
+      toast.add({
+        title: 'Đăng xuất thành công!',
+        description: 'Đang chuyển hướng về trang đăng nhập...',
+        color: 'success',
+        icon: 'i-lucide-check-circle'
+      })
+      
+      navigateTo('/auth/login')
+    } catch (error) {
+      console.error('Đăng xuất thất bại:', error)
+    }
+  }
+}
 
 const profileItems = [
   {
